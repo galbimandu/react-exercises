@@ -18,9 +18,31 @@ import "./Card.css";
 ***********************************************************/
 
 class Card extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    return <div className="card-container"></div>;
+
+    const { cards } = this.props;
+
+    return (
+      <>
+        {cards.map(item => {
+          return (
+            <div className="card-container" key={item.id}>
+              <img src={`https://robohash.org/${item.id}?set=set2&size=180x180`} alt="" />
+              <h2>{item.name}</h2>
+              <p>{item.email}</p>
+            </div>
+          )
+        })}
+      </>
+    );
   }
 }
 
 export default Card;
+
+//숫자가 다른 이미지주소를 monsters배열의 id로 가져와서 각각 다른 이미지를 뿌려준다. (템플릿 리터럴 그대로)
