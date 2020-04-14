@@ -36,7 +36,7 @@ class App extends Component {
     const filteredList = monsters.filter((monster) => {
       return monster.name.toLowerCase().includes(userInput)
     })
-    console.log(filteredList); 
+    // console.log(filteredList); 
 
     return (
       <div className="App">

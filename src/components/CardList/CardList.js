@@ -4,12 +4,20 @@ import "./CardList.css";
 
 class CardList extends Component {
   render() {
+    const { monsters } = this.props;
+
     return (
-    <div 
-      className="card-list"
-      monsters={this.props.monsters}
-    >
-    <Card monsters={this.props.monsters}/>
+    <div className="card-list">
+      {monsters.map( (monster) => {
+        return (
+          <Card 
+            key={monster.id} 
+            id={monster.id} 
+            name={monster.name} 
+            email={monster.email} 
+          />
+          );
+      })}
     </div>);
   }
 }
