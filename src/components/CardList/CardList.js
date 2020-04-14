@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Card from "../Card/Card"
 import "./CardList.css";
 
 /***********************************************************
@@ -9,8 +10,18 @@ import "./CardList.css";
 
 class CardList extends Component {
   render() {
-    return <div className="card-list"></div>;
+    const monsterCard = this.props.monsters.map((monster) => (
+      <Card id={monster.id} name={monster.name} email={monster.email} />
+    )
+    )
+    return (
+      <div className="card-list">
+        {monsterCard}
+      </div>
+    )
   }
 }
 
 export default CardList;
+//내가 찍는 대상의 데이터 타입이 정확히 무엇인지 인지하자!
+//map에서 받는 인자를 제대로 인지 못하여서 실수를 범함
