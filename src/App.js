@@ -21,23 +21,48 @@ import "./App.css";
 ***********************************************************/
 
 class App extends Component {
-  state = {
-    monsters: [],
-    userInput: "",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      monsters: [],
+      userInput: "",
+    };
+    this.handleChange = this.handleChange.bind(this)
+  }
 
   // 데이터 로딩
+  componentDidMount = () => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(newMon => this.setState({
+        monsters: newMon
+      }));
+  }
 
   // SearchBox에 props로 넘겨줄 handleChange 메소드 정의
+  handleChange = (e) => {
+    this.setState({
+      userInput: e.target.value
+    })
+    //console.log("hi")
+  }
+
+  
+  
 
   render() {
     // 필터링 로직
+    var filteredMonsters = this.state.monsters;
+      filteredMonsters = filteredMonsters.filter((m) => {
+        return (m.name.toLowerCase().includes((this.state.userInput)))
+      })
+     
 
     return (
       <div className="App">
         <h1>컴포넌트 재사용 연습!</h1>
-        {/* <SearchBox handleChange=정의한메소드 /> */}
-        {/* <CardList monsters=필터링 된 몬스터리스트 /> */}
+        <SearchBox handleChange={this.handleChange} />
+        <CardList monsters={filteredMonsters}/>
       </div>
     );
   }
