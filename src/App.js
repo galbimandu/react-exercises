@@ -39,7 +39,7 @@ class App extends Component {
     })
   }
   render() {    // 필터링 로직
-    let filtered = this.state.monsters.filter(monster=>monster.name.toLowerCase().includes(this.state.userInput))
+    let filtered = this.state.monsters.filter(monster=>monster.name.toLowerCase().includes(this.state.userInput.toLowerCase()))
 
     return (
       <div className="App">
