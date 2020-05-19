@@ -40,13 +40,12 @@ class App extends Component {
   }
   render() {    // 필터링 로직
     let filtered = this.state.monsters.filter(monster=>monster.name.toLowerCase().includes(this.state.userInput))
-  
-    
+
     return (
       <div className="App">
         <h1>컴포넌트 재사용 연습!</h1>
-        {<SearchBox handleChange = {this.handleChange} /> }
-        {<CardList  monsters={filtered} 된 몬스터리스트 />}
+        <SearchBox handleChange = {this.handleChange} />
+        <CardList  monsters={filtered} 된 몬스터리스트 />
       </div>
     );
   }
